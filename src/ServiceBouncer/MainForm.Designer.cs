@@ -29,17 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridStatusIcon = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridStatupType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStartItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStopItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,6 +75,11 @@
             this.toolStripFilterBox = new System.Windows.Forms.ToolStripTextBox();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.appTerminationTimer = new System.Windows.Forms.Timer(this.components);
+            this.dataGridStatusIcon = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridStatupType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.TopToolStripPanel.SuspendLayout();
@@ -100,7 +101,7 @@
             // toolStripContainer.ContentPanel
             // 
             this.toolStripContainer.ContentPanel.Controls.Add(this.dataGridView);
-            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(1008, 307);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(1008, 275);
             this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer.Name = "toolStripContainer";
@@ -146,80 +147,40 @@
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridStatusIcon,
             this.dataGridName,
+            this.ServiceDescription,
             this.dataGridStatus,
             this.dataGridStatupType});
             this.dataGridView.ContextMenuStrip = this.contextMenu;
             this.dataGridView.DataSource = this.serviceViewModelBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(7);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowTemplate.Height = 25;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1008, 307);
+            this.dataGridView.Size = new System.Drawing.Size(1008, 275);
             this.dataGridView.TabIndex = 0;
-            // 
-            // dataGridStatusIcon
-            // 
-            this.dataGridStatusIcon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridStatusIcon.DataPropertyName = "StatusIcon";
-            this.dataGridStatusIcon.FillWeight = 50.76142F;
-            this.dataGridStatusIcon.HeaderText = "";
-            this.dataGridStatusIcon.MinimumWidth = 30;
-            this.dataGridStatusIcon.Name = "dataGridStatusIcon";
-            this.dataGridStatusIcon.ReadOnly = true;
-            this.dataGridStatusIcon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridStatusIcon.Width = 30;
-            // 
-            // dataGridName
-            // 
-            this.dataGridName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridName.DataPropertyName = "Name";
-            this.dataGridName.FillWeight = 70.05687F;
-            this.dataGridName.HeaderText = "Display Name";
-            this.dataGridName.Name = "dataGridName";
-            this.dataGridName.ReadOnly = true;
-            // 
-            // dataGridStatus
-            // 
-            this.dataGridStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridStatus.DataPropertyName = "Status";
-            this.dataGridStatus.FillWeight = 70.05687F;
-            this.dataGridStatus.HeaderText = "Status";
-            this.dataGridStatus.Name = "dataGridStatus";
-            this.dataGridStatus.ReadOnly = true;
-            this.dataGridStatus.Width = 68;
-            // 
-            // dataGridStatupType
-            // 
-            this.dataGridStatupType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridStatupType.DataPropertyName = "StartupType";
-            this.dataGridStatupType.FillWeight = 209.125F;
-            this.dataGridStatupType.HeaderText = "Startup Type";
-            this.dataGridStatupType.Name = "dataGridStatupType";
-            this.dataGridStatupType.ReadOnly = true;
-            this.dataGridStatupType.Width = 101;
             // 
             // contextMenu
             // 
@@ -373,7 +334,7 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip.Size = new System.Drawing.Size(1008, 32);
+            this.toolStrip.Size = new System.Drawing.Size(1008, 64);
             this.toolStrip.Stretch = true;
             this.toolStrip.TabIndex = 0;
             // 
@@ -559,6 +520,54 @@
             this.appTerminationTimer.Interval = 60000;
             this.appTerminationTimer.Tick += new System.EventHandler(this.AppTerminationTimerTick);
             // 
+            // dataGridStatusIcon
+            // 
+            this.dataGridStatusIcon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridStatusIcon.DataPropertyName = "StatusIcon";
+            this.dataGridStatusIcon.FillWeight = 50.76142F;
+            this.dataGridStatusIcon.HeaderText = "";
+            this.dataGridStatusIcon.MinimumWidth = 30;
+            this.dataGridStatusIcon.Name = "dataGridStatusIcon";
+            this.dataGridStatusIcon.ReadOnly = true;
+            this.dataGridStatusIcon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridStatusIcon.Width = 30;
+            // 
+            // dataGridName
+            // 
+            this.dataGridName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridName.DataPropertyName = "Name";
+            this.dataGridName.FillWeight = 70.05687F;
+            this.dataGridName.HeaderText = "Display Name";
+            this.dataGridName.Name = "dataGridName";
+            this.dataGridName.ReadOnly = true;
+            // 
+            // ServiceDescription
+            // 
+            this.ServiceDescription.DataPropertyName = "Name";
+            this.ServiceDescription.HeaderText = "Service Description";
+            this.ServiceDescription.Name = "ServiceDescription";
+            this.ServiceDescription.ReadOnly = true;
+            // 
+            // dataGridStatus
+            // 
+            this.dataGridStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridStatus.DataPropertyName = "Status";
+            this.dataGridStatus.FillWeight = 70.05687F;
+            this.dataGridStatus.HeaderText = "Status";
+            this.dataGridStatus.Name = "dataGridStatus";
+            this.dataGridStatus.ReadOnly = true;
+            this.dataGridStatus.Width = 68;
+            // 
+            // dataGridStatupType
+            // 
+            this.dataGridStatupType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridStatupType.DataPropertyName = "StartupType";
+            this.dataGridStatupType.FillWeight = 209.125F;
+            this.dataGridStatupType.HeaderText = "Startup Type";
+            this.dataGridStatupType.Name = "dataGridStatupType";
+            this.dataGridStatupType.ReadOnly = true;
+            this.dataGridStatupType.Width = 101;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -634,13 +643,14 @@
         private System.Windows.Forms.ToolStripButton toolStripConnectButton;
         private System.Windows.Forms.ToolStripTextBox toolStripConnectToTextBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridStatusIcon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridStatupType;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.Timer appTerminationTimer;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridStatusIcon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridStatupType;
     }
 }
 

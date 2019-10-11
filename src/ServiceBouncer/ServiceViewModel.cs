@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Management;
 using System.Reflection;
 using System.ServiceProcess;
 using System.Text;
@@ -18,6 +19,7 @@ namespace ServiceBouncer
         public event PropertyChangedEventHandler PropertyChanged;
         public string Name { get; private set; }
         public string ServiceName { get; private set; }
+        public string ServiceDescription { get; private set; }
         public string Status { get; private set; }
         public string StartupType { get; private set; }
         public Image StatusIcon { get; private set; }
@@ -205,6 +207,18 @@ namespace ServiceBouncer
                             {
                                 ServiceName = controller.ServiceName;
                                 changedEvents.Add("ServiceName");
+                            }
+                            using (ManagementObject service = new ManagementObject(new ManagementPath(string.Format("Win32_Service.Name='{0}'", ServiceName))))
+                            {
+                                if (service["Description"] != null)
+                                {
+                                    ServiceDescription = service["Description"].ToString();
+                                }
+                                else
+                                {
+                                    ServiceDescription = "Unavailable";
+                                }
+                                changedEvents.Add("ServiceDescription");
                             }
                         }
 

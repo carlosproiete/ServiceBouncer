@@ -323,7 +323,7 @@ namespace ServiceBouncer
 
             if (!string.IsNullOrWhiteSpace(toolStripFilterBox.Text))
             {
-                dataGridView.DataSource = new SortableBindingList<ServiceViewModel>(services.Where(service => service.Name.IndexOf(toolStripFilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList());
+                dataGridView.DataSource = new SortableBindingList<ServiceViewModel>(services.Where(service => service.Name.IndexOf(toolStripFilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0 || service.ServiceDescription.Contains(toolStripFilterBox.Text)).ToList());
             }
             else
             {
